@@ -1,0 +1,62 @@
+{
+  "build": {
+    "beforeDevCommand": "yarn dev",
+    "beforeBuildCommand": "yarn build",
+    "devPath": "http://localhost:1420",
+    "distDir": "../dist",
+    "withGlobalTauri": false
+  },
+  "package": {
+    "productName": "devmanager",
+    "version": "0.1.0"
+  },
+  "tauri": {
+    "allowlist": {
+      "all": false,
+      "fs": {
+        "all": true,
+        "scope": ["$DOCUMENT", "$DOCUMENT/devmgr_data", "$DOCUMENT/devmgr_data/db.json"]
+      },
+      "path": {
+        "all": true
+      },
+      "shell": {
+        "all": true,
+        "execute": true,
+        "sidecar": true,
+        "open": true,
+        "scope": [
+            {
+              "name": "open-vs-code",
+              "cmd": "$HOME/AppData/Local/Programs/Microsoft VS Code/Code.exe",
+              "args": [{ "validator": "\\S+" }]
+            }
+          ]
+      }
+    },
+    "bundle": {
+      "active": true,
+      "targets": "all",
+      "identifier": "it.smaddiona.devmgr",
+      "icon": [
+        "icons/32x32.png",
+        "icons/128x128.png",
+        "icons/128x128@2x.png",
+        "icons/icon.icns",
+        "icons/icon.ico"
+      ]
+    },
+    "security": {
+      "csp": null
+    },
+    "windows": [
+      {
+        "fullscreen": false,
+        "resizable": true,
+        "title": "devmanager",
+        "width": 800,
+        "height": 600
+      }
+    ]
+  }
+}
